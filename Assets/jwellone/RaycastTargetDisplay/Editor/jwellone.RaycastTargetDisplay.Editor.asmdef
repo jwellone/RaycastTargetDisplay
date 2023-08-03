@@ -1,0 +1,18 @@
+{
+    "name": "jwellone.RaycastTargetDisplay.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:83b587907d6e24f848f3c4be668f0770"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
