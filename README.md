@@ -7,10 +7,11 @@
 
 
 # RaycastTargetDisplay
-Will be able to visualize the RaycastTarget of ugui.
-- Gizmo display.
-- Line and fill selection.
-- Color coding for each canvas.
+Display the range of UGUI's Raycast target with the following settings:
+
+- Display in Gizmo: You can visualize the range in the Unity Editor Gizmo.
+- Display Types: Choose between "Wireframe" or "Filled" to customize the appearance of the displayed range.
+- Custom Color per Canvas: Set a unique color for the displayed range on a per-canvas basis.
 
 This feature is one of the "j1Tech" developed by jwellone Inc for Unity.
 
