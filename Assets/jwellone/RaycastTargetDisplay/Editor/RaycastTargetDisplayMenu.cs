@@ -10,21 +10,21 @@ namespace jwelloneEditor
 {
     static class RaycastTargetDisplayMenu
     {
-        [MenuItem("GameObject/UI/jwellone/RaycastTargetDisplayCanvas")]
+        [MenuItem("GameObject/UI/jwellone/RaycastTargetDisplay")]
         static void OnCreate()
         {
-            if (GameObject.FindObjectOfType<RaycastTargetDisplayCanvas>() != null)
+            if (GameObject.FindObjectOfType<RaycastTargetDisplay>() != null)
             {
-                Debug.LogWarning("RaycastTargetDisplayCanvas already exists.");
+                Debug.LogWarning("RaycastTargetDisplay already exists.");
                 return;
             }
 
-            var owner = new GameObject("RaycastTargetDisplayCanvas").AddComponent<RaycastTargetDisplayCanvas>();
+            var owner = new GameObject("RaycastTargetDisplay").AddComponent<RaycastTargetDisplay>();
             var canvas = owner.gameObject.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 32767;
 
-            var display = new GameObject("Display").AddComponent<RaycastTargetDisplay>();
+            var display = new GameObject("Graphic").AddComponent<RaycastTargetDisplayGraphic>();
             display.transform.SetParent(owner.transform, false);
             display.raycastTarget = false;
             display.color = Color.green;
@@ -37,7 +37,7 @@ namespace jwelloneEditor
 
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
 
-            Undo.RegisterCreatedObjectUndo(owner.gameObject, "Create RaycastTargetDisplayCanvas");
+            Undo.RegisterCreatedObjectUndo(owner.gameObject, "Create RaycastTargetDisplay");
         }
     }
 }
