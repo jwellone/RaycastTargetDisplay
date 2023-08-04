@@ -163,16 +163,23 @@ namespace jwellone
 
             UpdateGraphics();
 
-            _canvasHashCodeToColor.Clear();
-            var colorIndex = 0;
+            var canvasList = new List<Canvas>();
             foreach (var graphic in _graphics)
             {
-                var hashCode = graphic.canvas.GetHashCode();
-                if (!_canvasHashCodeToColor.ContainsKey(hashCode))
+                var targetCanvas = graphic.canvas;
+                if (!canvasList.Contains(targetCanvas))
                 {
-                    _canvasHashCodeToColor.Add(hashCode, _colors[colorIndex % _colors.Length]);
-                    ++colorIndex;
+                    canvasList.Add(targetCanvas);
                 }
+            }
+
+            canvasList.Sort((a, b) => a.sortingOrder - b.sortingOrder);
+
+            _canvasHashCodeToColor.Clear();
+            for (var i = 0; i < canvasList.Count; ++i)
+            {
+                var hashCode = canvasList[i].GetHashCode();
+                _canvasHashCodeToColor.Add(hashCode, _colors[i % _colors.Length]);
             }
 
             SetVerticesDirty();
