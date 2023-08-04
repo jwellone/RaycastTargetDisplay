@@ -21,7 +21,7 @@ This feature is one of the "j1Tech" developed by jwellone Inc for Unity.
 - From the menu, select UI > jwellone > RaycastTargetDisplay.
 - Can select the RaycastTargetDispaly object added on the Hierarchy and set the display contents on the Inspector.
 
-![RaycastTargetDisplay](https://github.com/jwellone/RaycastTargetDisplay/assets/85072161/e20bbdd6-f679-4ba0-9010-cfc144b98425)
+![RaycastTargetDisplay](https://github.com/jwellone/RaycastTargetDisplay/assets/85072161/c2a1ebb5-561e-4b9a-ba66-01ee166fb30e)
 
 ## Authors
 Developer:[Yasuhiko Usui.](https://github.com/UsuiYasuhiko-jw1)
