@@ -4141,7 +4141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
       propertyPath: _colors.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
       propertyPath: _colors.Array.data[1].a
@@ -4190,6 +4190,18 @@ PrefabInstance:
     - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
       propertyPath: _colors.Array.data[3].r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
+      propertyPath: _colors.Array.data[4].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
+      propertyPath: _colors.Array.data[4].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593501245631326611, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
+      propertyPath: _colors.Array.data[4].r
+      value: 0.36771345
       objectReference: {fileID: 0}
     - target: {fileID: 5862497131816207560, guid: 7366611734ed74f8a8a2337f3d023aae, type: 3}
       propertyPath: m_UiScaleMode
