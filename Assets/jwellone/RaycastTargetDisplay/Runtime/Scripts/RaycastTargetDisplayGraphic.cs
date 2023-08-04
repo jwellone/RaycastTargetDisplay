@@ -369,7 +369,7 @@ namespace jwellone
             corners[3].x -= padding.z;
             corners[3].y += padding.y;
 
-            var targetCanvas = graphic.canvas;
+            var targetCanvas = graphic.canvas.rootCanvas;
             var targetCamera = targetCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : targetCanvas.worldCamera;
             var canvasRectTransform = targetCanvas.gameObject.GetComponent<RectTransform>();
             var localToWorldMatrix = targetRectTransform.localToWorldMatrix;
