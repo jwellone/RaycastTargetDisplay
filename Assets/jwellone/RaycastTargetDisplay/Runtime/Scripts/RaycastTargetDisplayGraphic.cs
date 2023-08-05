@@ -361,12 +361,11 @@ namespace jwellone
 #endif
         }
 
-        void GetCorners(Graphic graphic, ref Vector3[] corners)
+        void GetLocalCornersWithPadding(Graphic graphic, Vector3[] corners)
         {
-            var targetRectTransform = graphic.rectTransform;
             var padding = graphic.raycastPadding;
 
-            targetRectTransform.GetLocalCorners(corners);
+            graphic.rectTransform.GetLocalCorners(corners);
             corners[0].x += padding.x;
             corners[0].y += padding.y;
             corners[1].x += padding.x;
@@ -375,11 +374,16 @@ namespace jwellone
             corners[2].y -= padding.w;
             corners[3].x -= padding.z;
             corners[3].y += padding.y;
+        }
+
+        void GetCorners(Graphic graphic, ref Vector3[] corners)
+        {
+            GetLocalCornersWithPadding(graphic, corners);
 
             var targetCanvas = graphic.canvas.rootCanvas;
             var targetCamera = targetCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : targetCanvas.worldCamera;
-            var canvasRectTransform = targetCanvas.gameObject.GetComponent<RectTransform>();
-            var localToWorldMatrix = targetRectTransform.localToWorldMatrix;
+            var localToWorldMatrix = graphic.rectTransform.localToWorldMatrix;
+            var screenPointToLocalPointCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
             for (var i = 0; i < corners.Length; ++i)
             {
                 var point = RectTransformUtility.WorldToScreenPoint(
@@ -387,9 +391,9 @@ namespace jwellone
                     localToWorldMatrix.MultiplyPoint(corners[i]));
 
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    canvasRectTransform,
+                    rectTransform,
                     point,
-                    targetCamera,
+                    screenPointToLocalPointCamera,
                     out point);
 
                 corners[i].x = point.x;
@@ -425,13 +429,14 @@ namespace jwellone
             var corners = _corners;
             foreach (var graphic in _graphics)
             {
-                GetCorners(graphic, ref corners);
+                GetLocalCornersWithPadding(graphic, corners);
 
-                var canvasRectTransform = graphic.canvas.rootCanvas.gameObject.GetComponent<RectTransform>();
+                var localToWorldMatrix = graphic.rectTransform.localToWorldMatrix;
                 for (var i = 0; i < corners.Length; ++i)
                 {
-                    corners[i] = canvasRectTransform.localToWorldMatrix.MultiplyPoint(corners[i]);
+                    corners[i] = localToWorldMatrix.MultiplyPoint(corners[i]);
                 }
+
                 Gizmos.DrawLineStrip(corners, true);
             }
 
