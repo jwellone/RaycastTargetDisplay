@@ -300,7 +300,7 @@ namespace jwellone
 
         bool Culling(Graphic targetGraphic)
         {
-            var targetCanvas = targetGraphic.canvas;
+            var targetCanvas = targetGraphic.canvas.rootCanvas;
             var worldCamera = targetCanvas.worldCamera;
             if (targetCanvas.renderMode == RenderMode.ScreenSpaceOverlay || worldCamera == null)
             {
@@ -427,7 +427,7 @@ namespace jwellone
             {
                 GetCorners(graphic, ref corners);
 
-                var canvasRectTransform = graphic.canvas.gameObject.GetComponent<RectTransform>();
+                var canvasRectTransform = graphic.canvas.rootCanvas.gameObject.GetComponent<RectTransform>();
                 for (var i = 0; i < corners.Length; ++i)
                 {
                     corners[i] = canvasRectTransform.localToWorldMatrix.MultiplyPoint(corners[i]);
