@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 #nullable enable
@@ -15,7 +15,10 @@ namespace jwellone
 
         public static RaycastTargetDisplayType.Type displayType
         {
-            get => _instance?._graphic!.displayType ?? RaycastTargetDisplayType.Type.Line;
+            get
+            {
+                return _instance == null ? RaycastTargetDisplayType.Type.Line : _instance!._graphic!.displayType;
+            }
             set
             {
                 if (_instance != null)
@@ -27,7 +30,10 @@ namespace jwellone
 
         public static float lineWidth
         {
-            get => _instance?._graphic?.lineWidth ?? 0f;
+            get
+            {
+                return _instance == null ? 0f : _instance!._graphic!.lineWidth;
+            }
             set
             {
                 if (_instance != null)
@@ -39,7 +45,10 @@ namespace jwellone
 
         public static Color color
         {
-            get => _instance?._graphic!.color ?? Color.white;
+            get
+            {
+                return _instance == null ? Color.white : _instance!._graphic!.color;
+            }
             set
             {
                 if (_instance != null)
@@ -51,7 +60,10 @@ namespace jwellone
 
         public static Color selectColor
         {
-            get => _instance?._graphic!.selectColor ?? Color.white;
+            get
+            {
+                return _instance == null ? Color.white : _instance!._graphic!.selectColor;
+            }
             set
             {
                 if (_instance != null)
@@ -63,7 +75,10 @@ namespace jwellone
 
         public static bool enabledDisp
         {
-            get => _instance?._graphic!.enabled ?? false;
+            get
+            {
+                return _instance == null ? false : _instance!._graphic!.enabled;
+            }
             set
             {
                 if (_instance != null)

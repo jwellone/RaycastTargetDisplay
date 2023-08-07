@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -437,7 +437,15 @@ namespace jwellone
                     corners[i] = localToWorldMatrix.MultiplyPoint(corners[i]);
                 }
 
+#if UNITY_2022_1_OR_NEWER
                 Gizmos.DrawLineStrip(corners, true);
+#else
+                for (var i = 0; i < corners.Length; ++i)
+                {
+                    var nextIndex = (i + 1) % corners.Length;
+                    Gizmos.DrawLine(corners[i], corners[nextIndex]);
+                }
+#endif
             }
 
             _graphics.Clear();
